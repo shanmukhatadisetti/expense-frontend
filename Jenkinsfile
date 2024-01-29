@@ -9,13 +9,8 @@ pipeline {
         }
        }
    stage('Release') {
-    when {
-                    expression { BRANCH_NAME ==~ /(production|staging)/ }
-                    anyOf {
-                        environment name: 'DEPLOY_TO', value: 'production'
-                        environment name: 'DEPLOY_TO', value: 'staging'
-                    }
        steps {
+        sh 'env'
         echo 'CI'
         }
        }
