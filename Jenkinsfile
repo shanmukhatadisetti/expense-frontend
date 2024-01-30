@@ -4,7 +4,7 @@ pipeline {
 
    stage('Code Quality') {
      when {
-                 expression { env.TAG_NAME != ".*" }
+                 expression { env.TAG_NAME != env.BRANCH_NAME }
 
                   }
        steps {
@@ -14,7 +14,7 @@ pipeline {
        }
    stage('Release') {
      when {
-            expression { env.TAG_NAME ==~ ".*" }
+            expression { env.TAG_NAME == env.BRANCH_NAME }
 
              }
        steps {
